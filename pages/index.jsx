@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import Link from 'next/link'
+import Navigation from './../components/organisms/Navigation'
 import { useQuery } from '@apollo/react-hooks'
 
 const ViewerQuery = gql`
@@ -13,18 +13,19 @@ const ViewerQuery = gql`
 `
 
 const Index = () => {
-  const {
-    data: { viewer },
-  } = useQuery(ViewerQuery)
+  const { data = {} } = useQuery(ViewerQuery)
+  const { viewer = {} } = data
+  const { name, status } = viewer
 
   if (viewer) {
     return (
       <div>
-        You're signed in as {viewer.name} and you're {viewer.status} goto{' '}
-        <Link href="/about">
-          <a>static</a>
-        </Link>{' '}
-        page.
+        <Navigation />
+        <p>GQL Data came back with...</p>
+        <ul>
+          <li><strong>Name: </strong>{name}</li>
+          <li><strong>Status: </strong>{status}</li>
+        </ul>
       </div>
     )
   }
