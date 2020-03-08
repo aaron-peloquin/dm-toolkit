@@ -21,4 +21,8 @@ type Player {
 type Subscription {
   activePlayers: [Player]
 }
+
+type Mutation {
+  addPlayer: [Player]
+}
 `
