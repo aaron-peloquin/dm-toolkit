@@ -14,21 +14,24 @@ const ViewerQuery = gql`
 `
 
 const Index = () => {
-  const { data = {} } = useQuery(ViewerQuery)
+  const { data = {}, loading } = useQuery(ViewerQuery)
   const { viewer = {} } = data
   const { name, status } = viewer
 
-  if (viewer) {
-    return (
-      <div>
-        <Navigation />
-        <p>GQL Data came back with...</p>
-        <ul>
-          <li><strong>Name: </strong>{name}</li>
-          <li><strong>Status: </strong>{status}</li>
-        </ul>
-      </div>
-    )
+  if(loading) {
+    return <>
+      <Navigation />
+      <strong>Loading...</strong>
+    </>
+  } else if (viewer) {
+    return <>
+      <Navigation />
+      <p>GQL Data came back with...</p>
+      <ul>
+        <li><strong>Name: </strong>{name}</li>
+        <li><strong>Status: </strong>{status}</li>
+      </ul>
+    </>
   }
 
   return null
