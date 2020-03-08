@@ -18,23 +18,18 @@ const Index = () => {
   const { viewer = {} } = data
   const { name, status } = viewer
 
-  if(loading) {
-    return <>
-      <Navigation />
-      <strong>Loading...</strong>
-    </>
-  } else if (viewer) {
-    return <>
-      <Navigation />
-      <p>GQL Data came back with...</p>
+  return <>
+    <h1>Home</h1>
+    <Navigation />
+    {loading && <strong>Loading...</strong>}
+    {viewer && <>
+      <h2>Query results</h2>
       <ul>
         <li><strong>Name: </strong>{name}</li>
         <li><strong>Status: </strong>{status}</li>
       </ul>
-    </>
-  }
-
-  return null
+    </>}
+  </>
 }
 
 export default Index

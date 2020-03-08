@@ -2,6 +2,8 @@ import React, { useCallback } from 'react'
 import gql from 'graphql-tag'
 import { useSubscription, useMutation } from '@apollo/react-hooks'
 
+import Navigation from './../components/organisms/Navigation'
+
 type T_Player = {
   id: number
   name?: string
@@ -43,6 +45,7 @@ const Playground = () => {
 
   return <>
     <h1>Playground!</h1>
+    <Navigation />
     <button onClick={handleNewPlayer}>New</button>
     {loading
       ? <p>Loading...</p>
