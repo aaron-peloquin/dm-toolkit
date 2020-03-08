@@ -12,11 +12,6 @@ interface I_PlayerListSubscription {
   activePlayers: T_Player[]
 }
 
-const player_fragment = gql`
-fragment frag_player on Player {
-  id
-  name
-}`
 
 const test_subscription = gql`
 subscription subActivePlayers {
