@@ -1,6 +1,9 @@
+import React from 'react'
 import Navigation from './../components/organisms/Navigation'
 
-export default () => <div>
-    <Navigation />
-    <p>This is a static page, no queries, no nothing</p>
-  </div>
+const About = () => <div>
+  <Navigation />
+  <p>This is a static page, no queries, no nothing</p>
+</div>
+
+export default About

@@ -1,3 +1,4 @@
+import React from 'react'
 import gql from 'graphql-tag'
 import Navigation from './../components/organisms/Navigation'
 import { useQuery } from '@apollo/react-hooks'

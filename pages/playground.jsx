@@ -1,3 +1,4 @@
+import React from 'react'
 import gql from 'graphql-tag'
 import { useSubscription } from '@apollo/react-hooks'
 
@@ -9,11 +10,11 @@ subscription subActivePlayers {
   }
 }`
 
-const Playground = ({}) => {
+const Playground = () => {
   const { data = {}, loading } = useSubscription(test_subscription)
   const { activePlayers = [] } = data
 
-  console.log({activePlayers})
+  console.log({ activePlayers })
 
   return <div>
     <h1>Playground!</h1>
