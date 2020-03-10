@@ -33,7 +33,7 @@ mutation create_new_player {
 }`
 
 const Playground = () => {
-  const { data, loading } = useSubscription<I_PlayerListSubscription>(test_subscription)
+  const subscriptionBag = useSubscription<I_PlayerListSubscription>(test_subscription)
   const [makeNewPlayer, mutationBag] = useMutation(create_new_player)
   const activePlayers = data?.activePlayers
 
@@ -41,7 +41,7 @@ const Playground = () => {
     makeNewPlayer()
   }, [makeNewPlayer])
 
-  console.log({ activePlayers, mutationBag })
+  console.log({ subscriptionBag, mutationBag })
 
   return <>
     <h1>Playground!</h1>
