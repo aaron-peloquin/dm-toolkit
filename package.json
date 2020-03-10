@@ -5,9 +5,9 @@
   "author": "Aaron P <aaron4uk@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
+    "start": "next",
     "build": "next build",
-    "start": "next start"
+    "start-prod": "next start"
   },
   "dependencies": {
     "@apollo/react-common": "3.0.1",
