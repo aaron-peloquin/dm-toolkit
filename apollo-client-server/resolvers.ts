@@ -1,12 +1,12 @@
-import { PubSub } from 'apollo-server'
+import { PubSub } from 'graphql-subscriptions'
 const pubsub = new PubSub()
 
 const PLAYERS_CHANGED = 'PLAYERS_CHANGED'
 
 const mockPlayers = [
-  { id: 445, name: 'Fuddlog Pebbninaan', status: 'active' },
-  { id: 327, name: 'Torbirt Clognoom', status: 'active' },
-  { id: 198, name: 'Klonklil Fofankku', status: 'active' }
+  { id: 445, name: 'Fuddlog Pebbninaan', status: 'preload' },
+  { id: 327, name: 'Torbirt Clognoom', status: 'preload' },
+  { id: 198, name: 'Klonklil Fofankku', status: 'preload' }
 ]
 pubsub.publish(PLAYERS_CHANGED, mockPlayers)
 
@@ -19,7 +19,6 @@ export const resolvers = {
 
   Subscription: {
     activePlayers: {
-      // return pubsub.asyncIterator([PLAYERS_CHANGED])
       subscribe: () => {
         pubsub.publish(PLAYERS_CHANGED, mockPlayers)
         return pubsub.asyncIterator([PLAYERS_CHANGED])
@@ -33,9 +32,8 @@ export const resolvers = {
       const newPlayer1 = { id, name: `New Player #${id}`, status: 'mutated1' }
       const newPlayer2 = { id, name: `New Player #${id}`, status: 'mutated2' }
       mockPlayers.push(newPlayer1)
-      pubsub.publish(PLAYERS_CHANGED)
+      pubsub.publish(PLAYERS_CHANGED, mockPlayers)
       return newPlayer2
-      // return { status: 'It Worked' }
     }
   }
 }

@@ -1,6 +1,6 @@
 import App from 'next/app'
 import React from 'react'
-import { withApollo } from '../apollo/client'
+import { withApollo } from '../apollo-client-server/client'
 
 class MyApp extends App {
   render() {

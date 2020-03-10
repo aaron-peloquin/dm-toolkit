@@ -11,7 +11,6 @@ type Query {
   viewer: Player
 }
 
-  
 type Subscription {
   activePlayers: [Player]
 }
