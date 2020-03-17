@@ -8,7 +8,7 @@ const mockPlayers = [
   { id: 327, name: 'Torbirt Clognoom', status: 'preload' },
   { id: 198, name: 'Klonklil Fofankku', status: 'preload' }
 ]
-pubsub.publish(PLAYERS_CHANGED, mockPlayers)
+// pubsub.publish(PLAYERS_CHANGED, mockPlayers)
 
 export const resolvers = {
   Query: {
@@ -19,10 +19,7 @@ export const resolvers = {
 
   Subscription: {
     activePlayers: {
-      subscribe: () => {
-        pubsub.publish(PLAYERS_CHANGED, mockPlayers)
-        return pubsub.asyncIterator([PLAYERS_CHANGED])
-      },
+      subscribe: () => pubsub.asyncIterator(PLAYERS_CHANGED),
     },
   },
 

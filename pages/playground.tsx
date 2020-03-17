@@ -35,6 +35,7 @@ mutation create_new_player {
 const Playground = () => {
   const subscriptionBag = useSubscription<I_PlayerListSubscription>(test_subscription)
   const [makeNewPlayer, mutationBag] = useMutation(create_new_player)
+  const { data, loading } = subscriptionBag
   const activePlayers = data?.activePlayers
 
   const handleNewPlayer = useCallback(() => {
